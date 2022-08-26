@@ -18,15 +18,16 @@ python3 iguc.py user1 user2 user3
 ```
 ### -Or
 ```
-python iguc.py user1 user2 user3
+python iguc.py user1 user2 user3 socks_proxy
 ```
+## If you won't use proxy let socks_proxy None
 ## You can type as many users as you want.
 ## You'll recieve somthing like this:
 
 ```
-user1 is Available, profile url: https://www.instagram.com/user1
-user2 is Unavailable.
-user3 is Available, profile url: https://www.instagram.com/user3
+[user1] is Available, profile url: https://www.instagram.com/user1
+[user2] is Unavailable.
+[user3] is Available, profile url: https://www.instagram.com/user3
 ```
 
 # Use It For Educational Purposes Only!
