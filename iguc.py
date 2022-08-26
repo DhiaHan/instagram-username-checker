@@ -1,14 +1,13 @@
 import requests
-from random_user_agent.user_agent import UserAgent as ua
 from datetime import datetime
 import sys
 
 class IGUsernameChecker():
 
 	def __init__(self, proxies=None):
-		self.proxies = proxies
+		self.proxies = {'https':proxies, 'http':proxies}
 		print('Generating user agent ...')
-		self.user_agent = ua().get_random_user_agent()
+		self.user_agent = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:104.0) Gecko/20100101 Firefox/104.0"
 		print('Done')
 		self.session = requests.session()
 		self.url = "https://www.instagram.com/"
@@ -31,7 +30,17 @@ class IGUsernameChecker():
 		try:
 			res = self.session.post(self.login_url, headers=self.build_headers(self.user_agent), data=data, proxies=self.proxies).json()
 			return res['user']
-		except Exception as e : print(e)
+		except requests.exceptions.SSLError as err:
+			print('SSL Error. Adding custom certs to Certifi store...')
+			cafile = certifi.where()
+			path_g = '/Users/krunal/Library/Python/3.8/lib/python/site-packages/certifi/cacert.pem'
+			with open(path_g, 'rb') as infile:
+				customca = infile.read()
+			with open(cafile, 'ab') as outfile:
+				outfile.write(customca)
+			print('That might have worked.')
+		
+
 		
 		
 	def build_headers(self, user_agent):
@@ -51,8 +60,10 @@ class IGUsernameChecker():
 		
 		return headers
 
+
 iguc = IGUsernameChecker()
 for username in sys.argv[1:]:
-	print(username, iguc.is_real(username))
-
-
+	res = iguc.is_real(username)
+	if res:
+		print(username, 'is Available, url:', iguc.url+username)
+	else : print(username, 'is Unavailab.')
