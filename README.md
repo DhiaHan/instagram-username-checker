@@ -22,7 +22,7 @@ python iguc.py user1 user2 user3 socks_proxy
 ```
 ## If you don't want to use proxy let socks_proxy be None
 ## You can type as many users as you want.
-## You'll recieve somthing like this:
+## You'll recieve something like this:
 
 ```
 [user1] is Available, profile url: https://www.instagram.com/user1
