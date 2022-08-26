@@ -6,9 +6,7 @@ class IGUsernameChecker():
 
 	def __init__(self, proxies=None):
 		self.proxies = {'https':proxies, 'http':proxies}
-		print('Generating user agent ...')
-		self.user_agent = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:104.0) Gecko/20100101 Firefox/104.0"
-		print('Done')
+		self.user_agent = "'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; WOW64; Trident/4.0; .NET4.0C; .NET4.0E; 360SE)"
 		self.session = requests.session()
 		self.url = "https://www.instagram.com/"
 		self.login_url = "https://www.instagram.com/accounts/login/ajax/"
@@ -67,3 +65,6 @@ for username in sys.argv[1:]:
 	if res:
 		print(username, 'is Available, url:', iguc.url+username)
 	else : print(username, 'is Unavailab.')
+
+
+
