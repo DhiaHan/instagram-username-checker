@@ -14,7 +14,7 @@ pip install -r requirements.txt
 
 # ∙How to Use/Run
 ```
-python3 iguc.py user1 user2 user3
+python3 iguc.py user1 user2 user3 socks_proxy
 ```
 ### -Or
 ```
