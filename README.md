@@ -1,5 +1,5 @@
 # instagram-username-checker
-Instagram username availability checker python script. No selenium, No webdrivers, Only REQUESTS.
+No login required, No selenium, No webdrivers, Only REQUESTS.
 
 # ∙How to set up everything
 ## 1. Clone the repository.
