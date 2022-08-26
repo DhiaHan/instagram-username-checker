@@ -6,7 +6,7 @@ class IGUsernameChecker():
 
 	def __init__(self, proxies=None):
 		self.proxies = {'socks5':proxies}
-		self.user_agent = "'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; WOW64; Trident/4.0; .NET4.0C; .NET4.0E; 360SE)"
+		self.user_agent = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; WOW64; Trident/4.0; .NET4.0C; .NET4.0E; 360SE)"
 		self.session = requests.session()
 		self.url = "https://www.instagram.com/"
 		self.login_url = "https://www.instagram.com/accounts/login/ajax/"
