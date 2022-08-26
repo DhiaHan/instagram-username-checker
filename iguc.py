@@ -10,6 +10,7 @@ class IGUsernameChecker():
 		self.session = requests.session()
 		self.url = "https://www.instagram.com/"
 		self.login_url = "https://www.instagram.com/accounts/login/ajax/"
+		self.headers = self.build_headers(self.user_agent)
 	
 	def generate_password(self):
 		return '#PWD_INSTAGRAM_BROWSER:0:{}:{}'.format(int(datetime.now().timestamp()), 'by#dhia#eddine')
@@ -26,9 +27,10 @@ class IGUsernameChecker():
 		data.update({'username':username})
 		data.update({'enc_password':self.generate_password()})
 		try:
-			res = self.session.post(self.login_url, headers=self.build_headers(self.user_agent), data=data, proxies=self.proxies).json()
+			res = self.session.post(self.login_url, headers=self.headers, data=data, proxies=self.proxies).json()
 			return res['user']
-		except : pass
+		except Exception as e:
+			print('An Errror occured, please check your proxy, or contact developer at: instagram:dhia.eddine.hanafi')
 		
 	def build_headers(self, user_agent):
 		cookies_c = dict(self.session.get(self.url, headers={'User-agent':self.user_agent}, proxies=self.proxies).cookies)
@@ -48,8 +50,9 @@ class IGUsernameChecker():
 		return headers
 
 
-iguc = IGUsernameChecker('54.37.202.111:29879')
-for username in sys.argv[1:]:
+proxy = sys.argv[-1] if sys.argv[-1].lower() != 'none' else None 
+iguc = IGUsernameChecker(proxy)
+for username in sys.argv[1:-1]:
 	res = iguc.is_real(username)
 	if res:
 		print('['+username+']', 'is Available, url:', iguc.url+username)
