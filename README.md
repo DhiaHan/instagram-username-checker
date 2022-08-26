@@ -20,7 +20,7 @@ python3 iguc.py user1 user2 user3 socks_proxy
 ```
 python iguc.py user1 user2 user3 socks_proxy
 ```
-## If you won't use proxy let socks_proxy None
+## If you don't want to use proxy let socks_proxy be None
 ## You can type as many users as you want.
 ## You'll recieve somthing like this:
 
@@ -30,5 +30,5 @@ python iguc.py user1 user2 user3 socks_proxy
 [user3] is Available, profile url: https://www.instagram.com/user3
 ```
 
-# Use It For Educational Purposes Only!
+## Use It For Educational Purposes Only!
 # Enjoy :)
